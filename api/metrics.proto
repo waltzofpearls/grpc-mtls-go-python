@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package api;
+
+import "google/protobuf/timestamp.proto";
+
+service Metrics {
+  rpc Query (QueryMetricsRequest) returns (QueryMetricsResponse);
+}
+
+message QueryMetricsRequest {
+  string metricName = 1;
+  map<string, string> labels = 2;
+  google.protobuf.Timestamp start = 3;
+  google.protobuf.Timestamp end = 4;
+}
+
+message QueryMetricsResponse {
+  repeated Metric metrics = 1;
+}
+
+message Metric {
+  string name = 1;
+  map<string, string> labels = 2;
+
+  message SamplePair {
+    google.protobuf.Timestamp time = 1;
+    double value = 2;
+  }
+
+  repeated SamplePair values = 3;
+}
