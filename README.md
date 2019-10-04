@@ -25,7 +25,7 @@ pip install grpcio grpcio-tools
 
 ### Run server and client
 
-First thing first, run `make` to generate Go and Python code from `api/metrics.proto` file,
+First things first, run `make` to generate Go and Python code from `api/metrics.proto` file,
 and create all the certs needed when launching the server and client.
 
 In one terminal window/split, run:
